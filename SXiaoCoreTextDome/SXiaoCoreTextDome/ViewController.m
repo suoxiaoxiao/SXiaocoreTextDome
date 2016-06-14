@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "SXCoreTextView.h"
 
 @interface ViewController ()
 
@@ -16,6 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    SXCoreTextView *textView = [[SXCoreTextView alloc] init];
+    textView.frame = CGRectMake(100, 100, 200, 50);
+    textView.backgroundColor = [UIColor orangeColor];
+    [self.view addSubview:textView];
     // Do any additional setup after loading the view, typically from a nib.
 }
 

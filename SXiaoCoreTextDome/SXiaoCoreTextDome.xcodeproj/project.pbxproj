@@ -14,6 +14,10 @@
 		A80241C91D0FD918001C9D75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A80241C81D0FD918001C9D75 /* Assets.xcassets */; };
 		A80241CC1D0FD918001C9D75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A80241CA1D0FD918001C9D75 /* LaunchScreen.storyboard */; };
 		A80241D71D0FD918001C9D75 /* SXiaoCoreTextDomeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A80241D61D0FD918001C9D75 /* SXiaoCoreTextDomeUITests.m */; };
+		A80241E31D0FD9E8001C9D75 /* SXCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A80241E21D0FD9E8001C9D75 /* SXCoreTextView.m */; };
+		A80241E71D0FDDB8001C9D75 /* btn_login_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A80241E41D0FDDB8001C9D75 /* btn_login_disabled@2x.png */; };
+		A80241E81D0FDDB8001C9D75 /* btn_login_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A80241E51D0FDDB8001C9D75 /* btn_login_highlighted@2x.png */; };
+		A80241E91D0FDDB8001C9D75 /* btn_login_nomal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A80241E61D0FDDB8001C9D75 /* btn_login_nomal@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,11 @@
 		A80241D21D0FD918001C9D75 /* SXiaoCoreTextDomeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SXiaoCoreTextDomeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A80241D61D0FD918001C9D75 /* SXiaoCoreTextDomeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SXiaoCoreTextDomeUITests.m; sourceTree = "<group>"; };
 		A80241D81D0FD918001C9D75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A80241E11D0FD9E8001C9D75 /* SXCoreTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXCoreTextView.h; sourceTree = "<group>"; };
+		A80241E21D0FD9E8001C9D75 /* SXCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXCoreTextView.m; sourceTree = "<group>"; };
+		A80241E41D0FDDB8001C9D75 /* btn_login_disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_login_disabled@2x.png"; path = "SXiaoCoreTextDome/btn_login_disabled@2x.png"; sourceTree = "<group>"; };
+		A80241E51D0FDDB8001C9D75 /* btn_login_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_login_highlighted@2x.png"; path = "SXiaoCoreTextDome/btn_login_highlighted@2x.png"; sourceTree = "<group>"; };
+		A80241E61D0FDDB8001C9D75 /* btn_login_nomal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_login_nomal@2x.png"; path = "SXiaoCoreTextDome/btn_login_nomal@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +72,9 @@
 		A80241B01D0FD918001C9D75 = {
 			isa = PBXGroup;
 			children = (
+				A80241E41D0FDDB8001C9D75 /* btn_login_disabled@2x.png */,
+				A80241E51D0FDDB8001C9D75 /* btn_login_highlighted@2x.png */,
+				A80241E61D0FDDB8001C9D75 /* btn_login_nomal@2x.png */,
 				A80241BB1D0FD918001C9D75 /* SXiaoCoreTextDome */,
 				A80241D51D0FD918001C9D75 /* SXiaoCoreTextDomeUITests */,
 				A80241BA1D0FD918001C9D75 /* Products */,
@@ -85,6 +97,8 @@
 				A80241C01D0FD918001C9D75 /* AppDelegate.m */,
 				A80241C21D0FD918001C9D75 /* ViewController.h */,
 				A80241C31D0FD918001C9D75 /* ViewController.m */,
+				A80241E11D0FD9E8001C9D75 /* SXCoreTextView.h */,
+				A80241E21D0FD9E8001C9D75 /* SXCoreTextView.m */,
 				A80241C51D0FD918001C9D75 /* Main.storyboard */,
 				A80241C81D0FD918001C9D75 /* Assets.xcassets */,
 				A80241CA1D0FD918001C9D75 /* LaunchScreen.storyboard */,
@@ -192,8 +206,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A80241CC1D0FD918001C9D75 /* LaunchScreen.storyboard in Resources */,
+				A80241E71D0FDDB8001C9D75 /* btn_login_disabled@2x.png in Resources */,
 				A80241C91D0FD918001C9D75 /* Assets.xcassets in Resources */,
+				A80241E81D0FDDB8001C9D75 /* btn_login_highlighted@2x.png in Resources */,
 				A80241C71D0FD918001C9D75 /* Main.storyboard in Resources */,
+				A80241E91D0FDDB8001C9D75 /* btn_login_nomal@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +231,7 @@
 				A80241C41D0FD918001C9D75 /* ViewController.m in Sources */,
 				A80241C11D0FD918001C9D75 /* AppDelegate.m in Sources */,
 				A80241BE1D0FD918001C9D75 /* main.m in Sources */,
+				A80241E31D0FD9E8001C9D75 /* SXCoreTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
