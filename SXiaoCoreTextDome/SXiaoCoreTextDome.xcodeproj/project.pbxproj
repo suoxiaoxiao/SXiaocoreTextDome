@@ -18,6 +18,7 @@
 		A80241E71D0FDDB8001C9D75 /* btn_login_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A80241E41D0FDDB8001C9D75 /* btn_login_disabled@2x.png */; };
 		A80241E81D0FDDB8001C9D75 /* btn_login_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A80241E51D0FDDB8001C9D75 /* btn_login_highlighted@2x.png */; };
 		A80241E91D0FDDB8001C9D75 /* btn_login_nomal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A80241E61D0FDDB8001C9D75 /* btn_login_nomal@2x.png */; };
+		A88B67431D238B5300A08893 /* CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A88B67421D238B5300A08893 /* CustomLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		A80241E41D0FDDB8001C9D75 /* btn_login_disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_login_disabled@2x.png"; path = "SXiaoCoreTextDome/btn_login_disabled@2x.png"; sourceTree = "<group>"; };
 		A80241E51D0FDDB8001C9D75 /* btn_login_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_login_highlighted@2x.png"; path = "SXiaoCoreTextDome/btn_login_highlighted@2x.png"; sourceTree = "<group>"; };
 		A80241E61D0FDDB8001C9D75 /* btn_login_nomal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_login_nomal@2x.png"; path = "SXiaoCoreTextDome/btn_login_nomal@2x.png"; sourceTree = "<group>"; };
+		A88B67411D238B5300A08893 /* CustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLabel.h; sourceTree = "<group>"; };
+		A88B67421D238B5300A08893 /* CustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,8 @@
 				A80241C01D0FD918001C9D75 /* AppDelegate.m */,
 				A80241C21D0FD918001C9D75 /* ViewController.h */,
 				A80241C31D0FD918001C9D75 /* ViewController.m */,
+				A88B67411D238B5300A08893 /* CustomLabel.h */,
+				A88B67421D238B5300A08893 /* CustomLabel.m */,
 				A80241E11D0FD9E8001C9D75 /* SXCoreTextView.h */,
 				A80241E21D0FD9E8001C9D75 /* SXCoreTextView.m */,
 				A80241C51D0FD918001C9D75 /* Main.storyboard */,
@@ -232,6 +237,7 @@
 				A80241C11D0FD918001C9D75 /* AppDelegate.m in Sources */,
 				A80241BE1D0FD918001C9D75 /* main.m in Sources */,
 				A80241E31D0FD9E8001C9D75 /* SXCoreTextView.m in Sources */,
+				A88B67431D238B5300A08893 /* CustomLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +424,7 @@
 				A80241DD1D0FD918001C9D75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A80241DE1D0FD918001C9D75 /* Build configuration list for PBXNativeTarget "SXiaoCoreTextDomeUITests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +433,7 @@
 				A80241E01D0FD918001C9D75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
