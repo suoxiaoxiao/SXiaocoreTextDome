@@ -48,7 +48,7 @@
 		A80241E11D0FD9E8001C9D75 /* SXCoreTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXCoreTextView.h; sourceTree = "<group>"; };
 		A80241E21D0FD9E8001C9D75 /* SXCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXCoreTextView.m; sourceTree = "<group>"; };
 		A80241E41D0FDDB8001C9D75 /* btn_login_disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_login_disabled@2x.png"; path = "SXiaoCoreTextDome/btn_login_disabled@2x.png"; sourceTree = "<group>"; };
-		A80241E51D0FDDB8001C9D75 /* btn_login_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_login_highlighted@2x.png"; path = "SXiaoCoreTextDome/btn_login_highlighted@2x.png"; sourceTree = "<group>"; };
+		A80241E51D0FDDB8001C9D75 /* btn_login_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_login_highlighted@2x.png"; sourceTree = "<group>"; };
 		A80241E61D0FDDB8001C9D75 /* btn_login_nomal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_login_nomal@2x.png"; path = "SXiaoCoreTextDome/btn_login_nomal@2x.png"; sourceTree = "<group>"; };
 		A88B67411D238B5300A08893 /* CustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLabel.h; sourceTree = "<group>"; };
 		A88B67421D238B5300A08893 /* CustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabel.m; sourceTree = "<group>"; };
@@ -76,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				A80241E41D0FDDB8001C9D75 /* btn_login_disabled@2x.png */,
-				A80241E51D0FDDB8001C9D75 /* btn_login_highlighted@2x.png */,
 				A80241E61D0FDDB8001C9D75 /* btn_login_nomal@2x.png */,
 				A80241BB1D0FD918001C9D75 /* SXiaoCoreTextDome */,
 				A80241D51D0FD918001C9D75 /* SXiaoCoreTextDomeUITests */,
@@ -102,6 +101,7 @@
 				A80241C31D0FD918001C9D75 /* ViewController.m */,
 				A88B67411D238B5300A08893 /* CustomLabel.h */,
 				A88B67421D238B5300A08893 /* CustomLabel.m */,
+				A80241E51D0FDDB8001C9D75 /* btn_login_highlighted@2x.png */,
 				A80241E11D0FD9E8001C9D75 /* SXCoreTextView.h */,
 				A80241E21D0FD9E8001C9D75 /* SXCoreTextView.m */,
 				A80241C51D0FD918001C9D75 /* Main.storyboard */,

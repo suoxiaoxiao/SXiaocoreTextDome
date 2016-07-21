@@ -27,17 +27,19 @@
     
 //    [UIColor colorWithPatternImage:[UIImage imageNamed:@""]];
     
-    CustomLabel *label = [[CustomLabel alloc] initWithFrame:CGRectMake(100, 100, 200, 50)];
+    CustomLabel *label = [[CustomLabel alloc] initWithFrame:CGRectMake(100, 100, 200, 200)];
     label.numberOfLines = 0;
     label.font = [UIFont systemFontOfSize:14];
     
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"我们我们一起我们一起奔跑,我们一起奔跑,一起戏水"];
-    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, 4)];
-    [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(4, 5)];    
+    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:22] range:NSMakeRange(0, attStr.length - 2)];
+    [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(4, 5)];
+    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:25] range:NSMakeRange(4, 5)];
     
     [attStr addAttribute:NSRoundBackgroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(attStr.length - 2, 2)];
     [attStr addAttribute:NSRoundFontNameAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(attStr.length - 2, 2)];
     label.backgroundColor = [UIColor redColor];
+    
     label.attributedText = attStr;
     [self.view addSubview:label];
 }

@@ -86,8 +86,6 @@ NSString * const NSRoundFontNameAttributeName = @"NSRoundFontNameAttributeName";
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    
     self.bgView.frame = self.bounds;
     self.text.frame = self.bounds;
 }
@@ -101,8 +99,8 @@ NSString * const NSRoundFontNameAttributeName = @"NSRoundFontNameAttributeName";
     UIFont   *_roundFont;
     NSString *_roundStr;
     NSRange  _roundRange;
-    
     CTFrameRef _frame;
+    CGFloat  _fontSize;
 }
 @property (nonatomic ,strong)PicPickView *picView;
 
@@ -141,14 +139,16 @@ CGFloat RunDelegateGetWidthCallback(void *refCon){
     return textWidth;//[UIImage imageNamed:imageName].size.width;
 }
 
-- (void)setUpAttributedString
+- (NSMutableAttributedString *)setUpAttributedString
 {
-    [self existenceSet];
+   return  [self existenceSet];
 }
 
 - (void)setAttributedText:(NSAttributedString *)attributedText
 {
-    [attributedText enumerateAttributesInRange:NSMakeRange(0, self.attributedText.length) options:NSAttributedStringEnumerationReverse usingBlock:^(NSDictionary<NSString *,id> * _Nonnull attrs, NSRange range, BOOL * _Nonnull stop) {
+    _roundRange = NSMakeRange(0, 0);
+    
+    [attributedText enumerateAttributesInRange:NSMakeRange(0, attributedText.length) options:0 usingBlock:^(NSDictionary<NSString *,id> * _Nonnull attrs, NSRange range, BOOL * _Nonnull stop) {
         
         for (NSString *attStr in attrs.allKeys) {
             if ([attStr isEqualToString:NSRoundBackgroundColorAttributeName]) {
@@ -173,25 +173,34 @@ CGFloat RunDelegateGetWidthCallback(void *refCon){
     self.picView.text.font = _roundFont;
     self.picView.bgView.backgroundColor = _roundColor;
     
+    
     NSLog(@"%@%@%@",_roundFont,_roundColor,NSStringFromRange(_roundRange));
     
     //需要将_roundFont 东西去掉
     if (_roundRange.length == 0 || _roundRange.location == NSNotFound) {
     }else{// 需要显示
         // 1 替换空白区域位置
-        _roundStr = [self.attributedText attributedSubstringFromRange:_roundRange].string;
+        _roundStr = [attributedText attributedSubstringFromRange:_roundRange].string;
         
         NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithAttributedString:attributedText];
         [att replaceCharactersInRange:_roundRange withString:@""];
         attributedText = att;
+        self.picView.text.text = _roundStr;
+        
+        _fontSize = [_roundStr boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName : _roundFont} context:nil].size.height;
+        NSLog(@"_fontSize = %f",_fontSize);
     }
     
     [super setAttributedText:attributedText];
-    
 }
 
-- (void)existenceSet
+- (NSMutableAttributedString *)existenceSet
 {
+//    //没有特殊设置字体
+//    if (_roundRange.length == 0 || _roundRange.location == NSNotFound) {
+//        return ;
+//    }
+    
     //设置CTRun的回调，用于针对需要被替换成图片的位置的字符，可以动态设置图片预留位置的宽高
     CTRunDelegateCallbacks imageCallbacks;
     imageCallbacks.version = kCTRunDelegateVersion1;
@@ -211,8 +220,9 @@ CGFloat RunDelegateGetWidthCallback(void *refCon){
     NSMutableAttributedString *imageAttributedString1 = [[NSMutableAttributedString alloc] initWithString:@" "];
     [att appendAttributedString:imageAttributedString1];
     
-    NSMutableAttributedString *imageAttributedString = [[NSMutableAttributedString alloc] initWithString:@" "];
     
+    
+    NSMutableAttributedString *imageAttributedString = [[NSMutableAttributedString alloc] initWithString:@" "];
     //设置图片预留字符使用CTRun回调
     [imageAttributedString addAttribute:(NSString *)kCTRunDelegateAttributeName value:(__bridge id)runDelegate range:NSMakeRange(0, 1)];
     CFRelease(runDelegate);
@@ -234,7 +244,7 @@ CGFloat RunDelegateGetWidthCallback(void *refCon){
     NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithObject:(id)style forKey:(id)kCTParagraphStyleAttributeName ];
     [att addAttributes:attributes range:NSMakeRange(0, [att length])];
     
-    self.attributedText = att;
+    return att;
 }
 
 
@@ -242,10 +252,11 @@ CGFloat RunDelegateGetWidthCallback(void *refCon){
 {
     [super drawRect:rect];
     
-    //设置NSMutableAttributedString的所有属性
-    [self setUpAttributedString];
+    NSMutableArray *imageHeightArray = [NSMutableArray array];
     
-    NSAttributedString *content = self.attributedText;
+    NSAttributedString *content = [self setUpAttributedString];
+    
+//    NSAttributedString *content = self.attributedText;
     
     NSLog(@"rect:%@",NSStringFromCGRect(rect));
     
@@ -281,6 +292,8 @@ CGFloat RunDelegateGetWidthCallback(void *refCon){
         //获取每行的宽度和高度
         CTLineGetTypographicBounds(line, &lineAscent, &lineDescent, &lineLeading);
         NSLog(@"ascent = %f,descent = %f,leading = %f",lineAscent,lineDescent,lineLeading);
+        NSLog(@"line-height = %f",lineAscent+lineDescent+lineLeading);
+        [imageHeightArray addObject:[NSString stringWithFormat:@"%f",lineAscent+lineDescent+lineLeading]];
         //获取每个CTRun
         CFArrayRef runs = CTLineGetGlyphRuns(line);
         NSLog(@"run count = %ld",CFArrayGetCount(runs));
@@ -296,7 +309,7 @@ CGFloat RunDelegateGetWidthCallback(void *refCon){
             CGRect runRect;
             //调整CTRun的rect
             runRect.size.width = CTRunGetTypographicBounds(run, CFRangeMake(0,0), &runAscent, &runDescent, NULL);
-            NSLog(@"width = %f",runRect.size.width);
+            NSLog(@"width = %f , height = %f",runRect.size.width,runRect.size.height);
             
             runRect=CGRectMake(lineOrigin.x + CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL), lineOrigin.y - runDescent, runRect.size.width, runAscent + runDescent);
             
@@ -305,14 +318,23 @@ CGFloat RunDelegateGetWidthCallback(void *refCon){
             if (imageName) {
                 UIImage *image = [_picView getCurrentImage];
                 if (image) {
+                    CGFloat height = 0;
+                    NSString *last = [imageHeightArray lastObject];
+                    [imageHeightArray removeLastObject];
+                    for (NSString  *subhtight in imageHeightArray) {
+                        height += [subhtight floatValue];
+                    }
                     CGRect imageDrawRect;
-                    imageDrawRect.size = CGSizeMake(textWidth, textHeight);
+                    imageDrawRect.size = CGSizeMake(textWidth, [_roundStr boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : _roundFont} context:nil].size.height);
                     imageDrawRect.origin.x = runRect.origin.x + lineOrigin.x;
                     //截屏
 //                    imageDrawRect.origin.y = lineOrigin.y;
 //                    CGContextDrawImage(context, imageDrawRect, image.CGImage);
                     //UIView
-                    imageDrawRect.origin.y = CFArrayGetCount(lines) * 14 - 14 + 5;
+                    
+                    //要加字体补偿
+                    imageDrawRect.origin.y = height + ([last floatValue] - _fontSize) * 0.5;
+                    //CFArrayGetCount(lines) * 14 - 14 + 5;
                     self.picView.frame = imageDrawRect;
                     [self addSubview:self.picView];
                 }
@@ -321,6 +343,8 @@ CGFloat RunDelegateGetWidthCallback(void *refCon){
     }
     CGContextRestoreGState(context);
 }
+
+
 
 - (void)drawTextInRect:(CGRect)rect
 {
